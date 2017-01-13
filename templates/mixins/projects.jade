@@ -1,0 +1,55 @@
+mixin project(org)
+	.org.row.text-center(id=org.id)
+		.card-projects.card-background
+			.card-image
+				if org.headingImg.url
+					img(src=org.headingImg.url, alt=org.name)
+				else
+					img(src="/images/card3-bg.jpg", alt="NEXT 布里斯班华人创业俱乐部")
+				.card-title= org.name
+			.card-projects-content
+				.content
+					h2.org__heading
+						if org.website
+							a(href=org.website, target='_blank')= org.name
+						else
+							= org.name
+					//- .card-date=org._.startDate.format('dddd D MMM YYYY')
+					//- 	|  from #{org._.startDate.format('h:mma')} - #{org._.endDate.format('h:mma')}
+					//- if org.location.serialised
+					//- 	h4.org__location
+					//- 		span.org__location-icon.entypo.entypo-location
+					//- 		span.org__location-address=org.location.serialised
+					
+					.row.md-padding
+						if org.status
+							.label.label-rose=org.status
+					.row.md-padding
+						div.col-md-12
+							div.col-md-4.pledged.project-status-item
+								if org.budget
+									strong=org.budget
+									span.grey-dark pledged
+							div.col-md-4.recievedMoney.project-status-item
+								if org.recievedMoney
+									strong=org.recievedMoney
+									span.grey-dark Recieved
+							div.col-md-4.backers.project-status-item
+								if org.backers
+									strong=org.backers
+									span.grey-dark backers
+					div
+						if org.description
+							div.text-left!= org.description
+					if org.website
+						p: a(href=org.website, target='_blank')= org.website.replace('http://', '')
+				.text-center.content
+					if org.members && org.members.length
+						.col-sm-12
+							hr.line-dashed.visible-xs.visible-sm
+							h6.text-muted.mt-0 Members in #{org.name}
+							ul.list-unstyled
+								each member in org.members
+									li=member.name.full
+
+	

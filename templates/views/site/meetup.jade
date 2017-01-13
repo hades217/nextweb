@@ -1,0 +1,11 @@
+extends ../../layouts/default
+
+include ../../mixins/meetup
+
+block intro
+	.page-intro: .container
+		h1.page-title Past Event
+		a.text-white(href='/meetups').text-muted &larr; Back to all meetups
+block content
+	.page-content
+		+meetup(meetup)

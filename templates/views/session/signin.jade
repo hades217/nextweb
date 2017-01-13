@@ -1,0 +1,19 @@
+extends ../../layouts/default
+
+block flash-messages
+	//- intentionally blank
+block intro
+	.page-intro: .container
+		h1 Sign into NEXT Startup Club
+		+flash-messages(messages)
+
+block content
+	.page-content
+		.container-xs
+			+auth-forms({ modal: false, initial: 'signin' })
+
+block js
+	script.
+		jQuery(function($) {
+			$('.auth-form').find('.form-control').eq(0).focus().select();
+		});

@@ -1,0 +1,62 @@
+include meetup-talk
+
+mixin meetup(meetup)
+
+	- var today = new Date();
+
+	.card-event.card-background
+		.card-image
+			.meetup-calendar.calendar.hidden-xs.hidden-sm(class=meetup.state == 'past' ? 'calendar--past' : null)
+				.calendar__header=meetup._.startDate.format('MMM')
+				.calendar__body
+					.calendar__date=meetup._.startDate.format('DD')
+					.calendar__year=meetup._.startDate.format('YYYY')
+			img(src="/images/card3-bg.jpg", alt="")
+			.card-title= meetup.name
+			.card-date=meetup._.startDate.format('dddd D MMM YYYY')
+				|  from #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
+			.card-spots=meetup.remainingRSVPs + ' spots left'
+		div
+			.meetup-content.content
+				//- h2.mv-5= meetup.name
+				//- h5=meetup._.startDate.format('dddd D MMM YYYY')
+				//- 	|  from #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
+				if meetup.description
+					div!= meetup.description
+				if meetup.talks.length
+					ul.meetup-talks
+						each talk in meetup.talks
+							+meetup-talk(talk)
+
+				if meetup.state == 'active'
+					if user
+						if meetup.rsvpsAvailable || rsvpStatus.rsvped && rsvpStatus.attending
+							.hero-button-title 
+								p Are you coming? 
+									span.text-thin (#{plural(meetup.remainingRSVPs, '* spot left', '* spots left')})
+							//- include ../includes/attendance-toggle
+							#react-hero-button
+						else
+							.alert.alert-success.mb-0.text-center No more tickets...
+					
+					else
+						#next-meetup.text-aliagn-center(data-id=meetup.id)
+							if meetup.rsvpsAvailable
+								a(href='/join', data-from=page.path).outline-btn RSVP Now 
+									span.text-thin (#{plural(meetup.remainingRSVPs, '* spot left', '* spots left')})
+							else
+								.alert.alert-success.mb-0.text-center No more tickets...
+				else if meetup.totalRSVPs
+					.text-center
+						.h1.text-muted.mb-0= meetup.totalRSVPs
+						.lead.text-muted people #{meetup.state == 'active' ? "are attending" : "attended"} this meetup
+					if meetup.state == 'past'
+						ul.list-unstyled.list-inline.text-center
+							for rsvp in meetup.rsvps
+								if rsvp.who
+									- var attendee = rsvp.who;
+									if attendee.isPublic
+										li: a(href=attendee.url, title=attendee.name.full)
+											img(src=attendee.photo.exists ? attendee._.photo.thumbnail(80,80) : attendee.avatarUrl || '/images/avatar.png', width=40, height=40, alt=attendee.name.full).img-circle
+									else
+										li(title=attendee.name.full): img(src=attendee.photo.exists ? attendee._.photo.thumbnail(80,80) : attendee.avatarUrl || '/images/avatar.png', width=40, height=40, alt=attendee.name.full).img-circle

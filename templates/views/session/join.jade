@@ -1,0 +1,22 @@
+extends ../../layouts/default
+
+block flash-messages
+	//- intentionally blank
+block intro
+	.page-intro: .container
+		h1.page-title Join NEXT Startup Club
+		+flash-messages(messages)
+		//- p.lead We usually meet up the 3rd week of every month. We hope to see you at 
+block content
+	.page-content
+		//- .page-intro
+		//- 	h1 Join NEXT Startup Club
+		//- 	+flash-messages(messages)
+		.container-xs
+			+auth-forms({ modal: false, initial: 'join' })
+
+block js
+	script.
+		jQuery(function($) {
+			$('.auth-form').find('.form-control').eq(0).focus().select();
+		});

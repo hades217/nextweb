@@ -1,0 +1,64 @@
+//
+// Calendar
+// ------------------------------
+
+@calendar-width:    100px;
+
+
+// base
+
+.calendar {
+	.tile-base();
+	text-align: center;
+	text-transform: uppercase;
+	width: @calendar-width;
+}
+.calendar--past {
+	color: @gray-light;
+
+	.calendar__header {
+		background-color: mix(black, @body-bg, 30%);
+	}
+}
+
+
+// header
+
+.calendar__header {
+	.border-top-radius( @border-radius-base );
+	background-color: @brand-danger;
+	color: white;
+	line-height: 24px;
+	margin: -1px -1px 0;
+	height: 24px;
+}
+
+
+// body
+
+.calendar__body {
+	line-height: 1;
+	padding-bottom: 5px;
+}
+.calendar__date {
+	font-size: 48px;
+}
+
+
+// specifically on a meetup
+
+.meetup-calendar {
+	margin-bottom: 20px;
+}
+
+@media (min-width: @screen-md-min) {
+	.meetup-calendar {
+		// .translate(-100%,0);
+		// left: -@page-padding;
+		margin-left: 10px;
+		top: 0;
+		position: absolute;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.2),0 1px 5px 0 rgba(0,0,0,0.12);
+		z-index: 3;
+	}
+}

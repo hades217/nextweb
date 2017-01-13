@@ -1,0 +1,26 @@
+extends ../../layouts/default
+
+include ../../mixins/projects
+
+block intro
+	.page-intro: .container
+		h1 项目众筹
+		p.lead 以裂变式创新的方式，去组队筹集资金，快速组队实施项目，所有有想法的朋友都可以提出自己的项目
+		//- .buttons
+			if !user
+				a(href='/join').btn.btn-primary Join NEXT Startup Club
+			a(href='/members').btn.btn-default View Members
+			a(href='/members/mentors').btn.btn-default View Mentors
+
+block content
+	.page-content: .container
+		.organisations
+			.content.text-center
+				h2.font-avenir.upcoming-events-title NEXT projects
+			if projects.length
+				each org, i in projects
+					if i
+						hr
+					+project(org)
+			else
+				h3.text-muted There are no organisations yet.

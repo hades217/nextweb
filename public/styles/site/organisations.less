@@ -1,0 +1,107 @@
+.organisations{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.card-projects{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	// margin-bottom: 30px;
+	border-radius: 6px;
+	color: rgba(0,0,0, 0.87);
+	background: #fff;
+	max-width: 750px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	.card-image {
+		height: 220px;
+		position: relative;
+		overflow: hidden;
+		margin-left: 15px;
+		margin-right: 15px;
+		margin-top: -30px;
+		border-radius: 6px;
+		box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+		img{
+			width: 100%;
+			height: auto;
+			border-radius: 6px;
+			pointer-events: none;
+		}
+		.card-title {
+			position: absolute;
+			bottom: 5px;
+			right: 15px;
+			color: #fff;
+			font-size: 1.3em;
+			text-shadow: 0 2px 5px rgba(33, 33, 33, 0.5);
+		}
+		.card-date {
+			position: absolute;
+			bottom: 45px;
+			right: 15px;
+			color: #fff;
+			font-size: 0.9em;
+			text-shadow: 0 2px 5px rgba(33, 33, 33, 0.5);
+		}
+	}
+}
+.card-projects-content{
+	.project-status-item{
+		display: inline-block;
+		> strong{
+			display: block;
+		}
+	}
+}
+.card-background {
+	background-position: center center;
+	background-size: cover;
+	text-align: center;
+	// &.card-event{
+	// 	background-image:url("/images/card3-bg.jpg");
+	// }
+	.content{
+		position: relative;
+		z-index: 2;
+		min-height: 180px;
+		padding-top: 40px;
+		padding-bottom: 40px;
+		max-width: 440px;
+		margin: 0 auto;
+		h2,h5,p,div, .hero-button-title{
+			// color:white;
+		}
+		h5{
+			font-weight: 400;
+			font-size: 0.9em;
+		}
+		p{
+			// color: rgba(255, 255, 255, 0.7);
+		}
+		// .outline-btn.grey-btn{
+		// 	border: 2px solid #ffffff;
+		// 	color: #ffffff;
+		// 	background-color: transparent;
+		// 	&:hover{
+		// 		border: 2px solid #1ab5c1;
+		// 		color: white;
+		// 		background-color: #1ab5c1;
+		// 	}
+		// }
+	}
+	.full-width{
+		&:after {
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			display: block;
+			left: 0;
+			top: 0;
+			content: "";
+			background-color: rgba(0, 0, 0, 0.24);
+			border-radius: 6px;
+		}
+	}
+
+}

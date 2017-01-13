@@ -1,0 +1,76 @@
+extends ../../layouts/default
+
+block flash-messages
+	//- !!! intentionally left blank
+
+block intro
+	.page-intro: .container
+		h1.page-title Members
+		p.lead The people who make up NEXT Startup Club. 
+			if !user
+				a(href='/join').js-auth-trigger Add your tile
+
+mixin member(member)
+	- var twitterUsername = member.twitterUsername || (member.twitter ? member.twitter.replace('@', ''): '');
+	- var githubUsername = member.githubUsername || (member.github ? member.github.replace('@', '') : '');
+
+	li.member-item
+		.member.member--card.card-profile.card
+			.member-section.member__photo.card-avatar
+				a(href=member.url): img(src=(member.photo.exists ? member._.photo.thumbnail(360,360) : member.avatarUrl || '/images/avatar.png'), alt=member.name.full, width=180, height=180)
+			.member-section.member__info.content
+				h6.text-grey
+				h5.member__title(style="margin-top:5px;margin-bottom:10px;" class=(member.bio.html ? null : 'member__title-only')): a(href=member.url)= member.name.full
+				p.description
+					span= member.career
+				p.description
+					span(style="margin-right:8px;margin-left:8px;")= member.title
+					span= member.company
+				//- if member.bio.html
+				//- 	.member__bio!=utils.cropString( utils.htmlToText(member.bio.html), 100, '...', true )
+				//- if twitterUsername || member.github
+				//- 	.member__accounts.hidden-xs
+				//- 		if twitterUsername
+				//- 			a(href='https://twitter.com/' + twitterUsername, target='_blank', data-toggle='tooltip', data-title='@' + twitterUsername, data-placement='top', data-container='#members').member__account.member__account--twitter.is-tooltip
+				//- 				span.entypo-social.entypo-twitter
+				//- 		if githubUsername
+				//- 			a(href='https://github.com/' + githubUsername, target='_blank', data-toggle='tooltip', data-title=githubUsername, data-placement='top', data-container='#members').member__account.member__account--github.is-tooltip
+				//- 				span.entypo-social.entypo-github
+				div.text-aliagn-center
+					a.outline-btn.blue-full-btn.margin-v-10(href=member.url) View
+				
+block content
+	.page-content
+		.container
+			+flash-messages(messages)
+			if organisers.length
+				.members-group
+					h3.text-caps.mb-1 Organisers
+					ul.list-unstyled.members-list
+						li.grid-sizer
+						each organiser in organisers
+							+member(organiser)
+			if speakers.length
+				.members-group
+					h3.text-caps.mt-2.mb-1 Speakers
+					ul.list-unstyled.members-list
+						li.grid-sizer
+						each speaker in speakers
+							+member(speaker)
+			if community.length
+				.members-group
+					h3.text-caps.mt-2.mb-1 Community
+					ul.list-unstyled.members-list
+						//- li.grid-sizer
+						each member in community
+							+member(member)
+			
+			if !organisers.length && !speakers.length && !community.length
+				h3.text-muted There are no members yet.
+
+block js
+	script(src='/js/lib/bootstrap/transition.js')
+	script(src='/js/lib/bootstrap/tooltip.js')
+	script(src="/js/lib/masonry/masonry.pkgd.min.js")
+	script(src="/js/lib/masonry/imagesloaded.pkgd.min.js")
+	script(src="/js/views/members.js")

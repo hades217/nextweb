@@ -1,0 +1,21 @@
+{
+  "name": "next-site",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Lightman Wang <lightman.wang@roames.com.au>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sine-waves": "^0.3.0"
+  }
+}

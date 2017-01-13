@@ -1,0 +1,76 @@
+extends ../../layouts/default
+
+include ../../mixins/organiser
+
+block intro
+	.page-intro: .container
+		h1.page-title About
+		p.lead  布里斯班华人创业平台，我们交流思想，交流最潮的科技，我们也互相帮助，为海外华人创业铺路
+block content
+	.page-content
+		.section.content-intro: .container-sm
+			div.mt-1.mb-3
+				h3.text-align-center 我们的故事
+				div
+					.separator-with-icon-holder.clearfix.separator-center
+						.separator
+							span(style='width: 85px;height: 1px')
+						.separator-icon
+							i.icon-linear-icon.lnr.lnr-user
+						.separator
+							span(style='width: 85px;height: 1px')
+				p 做NEXT创业俱乐部的想法源于创办人的创业经历。当时的创业团队由于缺少一个ios技术合伙人，而在布里斯班地区通过各种途径努力寻找，也未找到合适的。就萌生了一个想法：干脆把创业者吸引过来，大家一起来创业。所以干脆自己办起一个创业平台，来吸引各方面创业者，提供给大家一个交流认识的机会。从最初的6名成员，已经发展到了61名 members。我们希望创建起了一个华人创业者community，帮助创业者解决技术，财务，法律，市场，融资等问题。
+				p 聚集高质量思维活跃，热情创业的华人企业家，创业者，交流思想，相互合作。我们是非盈利组织，旨在为创业者提供一个交流的平台，同时也有项目区做合作和投资。我们会对每一位参加者审核背景，我们设立高门槛，也是为了确保成员的时间有效性跟效率。欢迎有志人士加入。
+			div.mt-1.mb-1
+				h3.text-align-center 我们的发展方向
+				.separator-with-icon-holder.clearfix.separator-center
+					.separator
+						span(style='width: 85px;height: 1px')
+					.separator-icon
+						i.icon-linear-icon.lnr.lnr-sun
+					.separator
+						span(style='width: 85px;height: 1px')
+				p 社交：NEXT一直坚持的方向，帮助会员找到合作伙伴，分享创业经验，互帮互助
+				p 培训：创业生态链环节讲座（法务，财务，管理，技术和政策等等），会找在相关领域有相当经验的人做public的培训活动。除此以外，会跟国内外的大佬做直播培训，比如京东副总裁，了解更多跨境电商的事
+				p 项目初始众筹：以裂变式创新的方式，去组队筹集资金，快速组队实施项目，所有有想法的朋友都可以提出自己的项目，会员可以通过是否参与来初始断定项目的可行性。也有项目在股权和资源等方面的众筹及收益服务
+				p 项目后期融资服务：与赞助商、地方产业园、孵化器、投资机构和全球顶尖产业机构合作服务
+			p NEXT Startup Club wouldn't be possible without our organisers:
+		.section.highlight: .container
+			h3 Organisers
+			p.lead Our partners:
+			.row.about-organisers
+				each org in organisers
+					.col-sm-3
+						+organiser(org)
+			
+		
+		//- CODE
+		.section: .container-sm
+			h2 
+			h5 We choose to share startup's good parts; and we choose to share our own.
+			
+			p 成员需要：
+			p 俱乐部只接受本科Bachelor以上学历申请
+			p 具有企业家思想 
+			p 参加需要通过申请成为成员
+			p 乐于分享idea
+			p 成员需要有工作经验，学生需要证明自己能力
+			p No drugs and gambling 
+			p 禁止传销，销售
+			//- p Whenever we come together as a community, our shared spaces are opportunities to showcase the best of what we can be. We are there to support our peers - to build each other up, to accept each other for who they are, and to encourage each other to become the people they want to be.
+			//- p With that in mind, if you are present at any SydJS event, whether as an attendee, organiser, sponsor, or speaker, we take it as given that you agree to follow this code of conduct:
+			//- p The SydJS community is dedicated to providing harassment-free experiences at events and conferences for everyone regardless of who they are or what they believe. We do not tolerate harassment in any form.
+			//- p All communication should be appropriate for a professional audience including people of many different backgrounds.
+			//- p Be kind and respectful towards others. Remember that harassment and exclusionary jokes are not appropriate for events supported by SydJS.
+			//- p Anyone violating these rules at events may be asked to leave the event without a refund at the sole discretion of the organisers.
+			//- p If you or someone else is subject to harassment, or you have a concern, please contact the event organisers (who will introduce themselves at the beginning of the event).
+			//- p The SydJS community is a welcoming and friendly place – thank you for being a part of it.
+			//- p If you believe in building people, communities, and software, then you are a part of us.
+			//- hr.mv-3
+			//- h5 Thank you
+			//- p This Code of Conduct has learned and borrowed much from others - especially <a href='http://ruby.org.au/code-of-conduct.html'>rubyaustralia</a>, <a href='http://jsconf.com/codeofconduct.html'>JSConf</a>, and <a href='https://gist.github.com/jcasimir/6992184'>Jeff Casimir</a>. Thank you to all who provided inspiration and feedback.
+
+block js
+	// twitter
+	script.
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
