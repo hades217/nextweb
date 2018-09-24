@@ -1,7 +1,7 @@
 
-## The nexstartup Website.
-nexstartup.org
-[jiangren.com.au](https://jiangren.com.au).
+## The Jiangren Website.
+The best code bootcamp in Australia
+Visit [The best code bootcamp in Australia: JR Academy](https://jiangren.com.au).
 
 ## Get Involved!
 
